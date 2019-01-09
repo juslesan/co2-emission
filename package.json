@@ -1,0 +1,34 @@
+{
+  "name": "co2-emission",
+  "version": "1.0.0",
+  "description": "https://www.reaktor.com/ennakkotehtava-ohjelmistokehittaja/",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node index.js",
+    "watch": "cross-env NODE_ENV=development node_modules/.bin/nodemon index.js",
+    "test": "cross-env NODE_ENV=test node_modules/.bin/jest --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juslesan/co2-emission.git"
+  },
+  "author": "Santeri Juslenius",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juslesan/co2-emission/issues"
+  },
+  "homepage": "https://github.com/juslesan/co2-emission#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "http": "0.0.0",
+    "mz": "^2.7.0",
+    "xml": "^1.0.1",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "nodemon": "^1.18.9"
+  }
+}
