@@ -18,6 +18,8 @@ const parseXML = async (data) => {
     let res
     await parser.parseString(data, async function (err, result) {
         res = await JSON.stringify(result.Root.data)
+        // res = (result.Root.data)
+
     })
     // console.log(res)
 

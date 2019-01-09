@@ -21,6 +21,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "cors": "^2.8.5",
+    "csvtojson": "^2.0.8",
     "express": "^4.16.4",
     "http": "0.0.0",
     "mz": "^2.7.0",
