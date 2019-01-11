@@ -5,6 +5,7 @@ const config = require('./utils/config')
 const axios = require('axios');
 const cors = require('cors')
 
+const countryRouter = require('./routers/country')
 const populationsRouter = require('./routers/populations')
 const pollutionsRouter = require('./routers/pollutions')
 const xmlReader = require('./external_apis/xmlReader')
@@ -15,6 +16,8 @@ app.use(cors())
 
 app.use(populationsRouter)
 app.use(pollutionsRouter)
+app.use('/country', countryRouter)
+
 // app.use(xmlReader)
 app.use(axios)
 const server = http.createServer(app)
