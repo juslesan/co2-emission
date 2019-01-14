@@ -4,7 +4,7 @@ const jsonParseName = (json, name) => {
     let count = Object.keys(json).length;
     
     for (let i = 0; i < count; i++) {
-        if (json[i]['Data Source'] == name) {
+        if (json[i]['Data Source'].toUpperCase() === name.toUpperCase()) {
             // console.log(i)
             return i;
         }
@@ -18,12 +18,19 @@ const jsonYears = (populations, emissions) => {
 
     // console.log(Object.values(populations))
     const countryStats = []
+    const popsYears = { name: "populations",
+                        data: {}}
+    const emisYears = { name: "emissions",
+                        data: {}}
     for (let i = 4; i < count; i++) {
-        countryStats.push({
-            population: Object.values(populations)[i],
-            emissions: Object.values(emissions)[i]
-        })
-    }
+        const year = 1956 + i
+        popsYears.data[year] = Object.values(populations)[i]
+        emisYears.data[year] = Object.values(emissions)[i]
+        }
+        
+        countryStats.push(popsYears)
+        countryStats.push(emisYears)
+    
     return countryStats
 } 
 
