@@ -12,6 +12,30 @@ const jsonParseName = (json, name) => {
     return -1;
 }
 
+const jsonParseSuperpowers = (json) => {
+    let count = Object.keys(json).length;
+    let indexes = []
+    for (let i = 0; i < count; i++) {
+        if (json[i]['Data Source'].toUpperCase() === 'United States'.toUpperCase()) {
+            indexes.push(i)
+        }
+        if (json[i]['Data Source'].toUpperCase() === 'India'.toUpperCase()) {
+            indexes.push(i)
+        }
+        if (json[i]['Data Source'].toUpperCase() === 'Russian federation'.toUpperCase()) {
+            indexes.push(i)
+        }
+        if (json[i]['Data Source'].toUpperCase() === 'China'.toUpperCase()) {
+            indexes.push(i)
+        }
+        if (json[i]['Data Source'].toUpperCase() === 'Germany'.toUpperCase()) {
+            indexes.push(i)
+        }
+    }
+    return indexes;
+
+}
+
 
 const jsonYears = (populations, emissions) => {
     let count = Object.keys(populations).length;
@@ -36,6 +60,7 @@ const jsonYears = (populations, emissions) => {
 
 module.exports = {
     jsonParseName,
-    jsonYears
+    jsonYears,
+    jsonParseSuperpowers
     
   }

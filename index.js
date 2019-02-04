@@ -6,6 +6,7 @@ const axios = require('axios');
 const cors = require('cors')
 
 const countryRouter = require('./routers/country')
+const superpowersRouter = require('./routers/superpowers')
 const populationsRouter = require('./routers/populations')
 const pollutionsRouter = require('./routers/pollutions')
 const xmlReader = require('./external_apis/xmlReader')
@@ -17,7 +18,7 @@ app.use(cors())
 app.use(populationsRouter)
 app.use(pollutionsRouter)
 app.use('/country', countryRouter)
-
+app.use('/superpowers', superpowersRouter)
 // app.use(xmlReader)
 app.use(axios)
 const server = http.createServer(app)
