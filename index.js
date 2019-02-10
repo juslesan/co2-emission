@@ -29,9 +29,15 @@ app.use(axios)
 const server = http.createServer(app)
 
 
-server.listen(config.port, () => {
-  console.log(`Server running on port ${config.port}`)
+var PORT = process.env.PORT || 3003
+
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
 })
+
+// server.listen(config.port, () => {
+//   console.log(`Server running on port ${config.port}`)
+// })
 
 worldbankCSV.worldbankDownloadCSV("http://api.worldbank.org/v2/en/indicator/EN.ATM.CO2E.KT?downloadformat=csv", "emissions.zip")
 worldbankCSV.worldbankDownloadCSV("http://api.worldbank.org/v2/en/indicator/SP.POP.TOTL?downloadformat=csv", "populations.zip")
