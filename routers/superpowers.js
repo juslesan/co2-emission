@@ -6,13 +6,13 @@ const xml = require('xml');
 const jsonParser = require('./../utils/jsonParser')
 
 superpowersRouter.get('/', async (req, res) => {
-    const populations = await csvReader.readCSV('./external_apis/API_SP.POP.TOTL_DS2_en_csv_v2_10224786.csv')
+    const populations = await csvReader.readCSV('./external_apis/data/populations.csv')
 
     
     const indexes = jsonParser.jsonParseSuperpowers(populations)
     // console.log(indexes)
 
-    const emissions = await csvReader.readCSV('./external_apis/API_EN.ATM.CO2E.KT_DS2_en_csv_v2_10224872.csv')
+    const emissions = await csvReader.readCSV('./external_apis/data/emissions.csv')
     const infoJson = []
 
     for (let i = 0; i < indexes.length; i++) {

@@ -11,6 +11,7 @@ const populationsRouter = require('./routers/populations')
 const pollutionsRouter = require('./routers/pollutions')
 const xmlReader = require('./external_apis/xmlReader')
 const csvReader = require('./external_apis/csvReader')
+const worldbankCSV = require('./external_apis/worldbankCSV')
 
 app.use(cors())
 // app.use(bodyParser.json())
@@ -19,17 +20,23 @@ app.use(populationsRouter)
 app.use(pollutionsRouter)
 app.use('/country', countryRouter)
 app.use('/superpowers', superpowersRouter)
-// app.use(xmlReader)
 app.use(axios)
+
 const server = http.createServer(app)
 
-// console.log(info)
 
 server.listen(config.port, () => {
   console.log(`Server running on port ${config.port}`)
 })
 
-// console.log(data)
+worldbankCSV.worldbankDownloadCSV("http://api.worldbank.org/v2/en/indicator/EN.ATM.CO2E.KT?downloadformat=csv", "emissions.zip")
+worldbankCSV.worldbankDownloadCSV("http://api.worldbank.org/v2/en/indicator/SP.POP.TOTL?downloadformat=csv", "populations.zip")
+
+worldbankCSV.worldbankExtractZip("emissions")
+worldbankCSV.worldbankExtractZip("populations")
+
+
+// console.log(file)
 
 
 module.exports = {

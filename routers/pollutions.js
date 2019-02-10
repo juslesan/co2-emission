@@ -6,13 +6,7 @@ const xml = require('xml');
 
 
 pollutionsRouter.get('/pollutions', async (req, res) => {
-    const info = await csvReader.readCSV('./external_apis/API_EN.ATM.CO2E.KT_DS2_en_csv_v2_10224872.csv')
-    // console.log(info)
-    
-    // res.type('application/xml');
-
-    // res.set('Content-Type', 'text/xml');
-    // res.send(xml(info));
+    const info = await csvReader.readCSV('./external_apis/data/emissions.csv')
 
     res.setHeader('Content-Type', 'application/json');
     res.send(info)
