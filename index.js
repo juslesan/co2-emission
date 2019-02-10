@@ -16,11 +16,19 @@ const worldbankCSV = require('./external_apis/worldbankCSV')
 app.use(cors())
 // app.use(bodyParser.json())
 
+app.get('/', (req, res) => {
+  res.send('<h1>Co2-emissions!</h1> <p> To search for emissions by country name -> /country/:name </p> <p> To search for superpower data -> /superpowers </p> ')
+})
+
 app.use(populationsRouter)
 app.use(pollutionsRouter)
 app.use('/country', countryRouter)
 app.use('/superpowers', superpowersRouter)
 app.use(axios)
+
+// app.get('/', (req, res) => {
+//   res.send('<h1>Co2-emissions!</h1> <p> To serach for emissions by country name -> /country/:id </p>')
+// })
 
 const server = http.createServer(app)
 
