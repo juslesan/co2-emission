@@ -9,7 +9,6 @@ const countryRouter = require('./routers/country')
 const superpowersRouter = require('./routers/superpowers')
 const populationsRouter = require('./routers/populations')
 const pollutionsRouter = require('./routers/pollutions')
-const xmlReader = require('./external_apis/xmlReader')
 const csvReader = require('./external_apis/csvReader')
 const worldbankCSV = require('./external_apis/worldbankCSV')
 
@@ -26,9 +25,6 @@ app.use('/country', countryRouter)
 app.use('/superpowers', superpowersRouter)
 app.use(axios)
 
-// app.get('/', (req, res) => {
-//   res.send('<h1>Co2-emissions!</h1> <p> To serach for emissions by country name -> /country/:id </p>')
-// })
 
 const server = http.createServer(app)
 
@@ -42,9 +38,6 @@ worldbankCSV.worldbankDownloadCSV("http://api.worldbank.org/v2/en/indicator/SP.P
 
 worldbankCSV.worldbankExtractZip("emissions")
 worldbankCSV.worldbankExtractZip("populations")
-
-
-// console.log(file)
 
 
 module.exports = {
