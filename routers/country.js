@@ -1,8 +1,6 @@
 const express = require('express')
 const countryRouter = express.Router()
-const worldbank = require('./../external_apis/worldbank')
 const csvReader = require('./../external_apis/csvReader')
-const xml = require('xml');
 const jsonParser = require('./../utils/jsonParser')
 
 

@@ -7,8 +7,6 @@ const cors = require('cors')
 
 const countryRouter = require('./routers/country')
 const superpowersRouter = require('./routers/superpowers')
-const populationsRouter = require('./routers/populations')
-const pollutionsRouter = require('./routers/pollutions')
 const worldbankCSV = require('./external_apis/worldbankCSV')
 
 app.use(cors())
@@ -17,8 +15,6 @@ app.get('/', (req, res) => { // Frontpage HTML
   res.send('<h1>Co2-emissions!</h1> <p> To search for emissions by country name -> /country/:name </p> <p> To search for superpower data -> /superpowers </p> ')
 })
 
-app.use(populationsRouter)
-app.use(pollutionsRouter)
 app.use('/country', countryRouter)
 app.use('/superpowers', superpowersRouter)
 app.use(axios)
