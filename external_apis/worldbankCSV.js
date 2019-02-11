@@ -2,8 +2,9 @@ let http = require('http'),
 unzipper = require('unzipper'),
 fs = require('fs');
 
-const worldbankDownloadCSV = (url, filename) => {
 
+// Download a file
+const worldbankDownloadCSV = (url, filename) => {
     let request = http.get(url, function(response) {
         if (response.statusCode === 200) {
             let file = fs.createWriteStream("external_apis/data/" + filename);
@@ -17,13 +18,13 @@ const worldbankDownloadCSV = (url, filename) => {
 
 }
 
+// Extracts the zip files from worldbank API
 const worldbankExtractZip = (filename) => { 
-    
     fs.createReadStream('external_apis/data/' + filename + '.zip')
     .pipe(unzipper.Parse())
     .on('entry', function (entry) {
       var fileName = entry.path;
-      if (!fileName.includes("Metadata")) {
+      if (!fileName.includes("Metadata")) { // extract only the yearly collected data as CSV
         entry.pipe(fs.createWriteStream('external_apis/data/' + filename + '.csv'));
       } else {
         entry.autodrain();

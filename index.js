@@ -9,13 +9,11 @@ const countryRouter = require('./routers/country')
 const superpowersRouter = require('./routers/superpowers')
 const populationsRouter = require('./routers/populations')
 const pollutionsRouter = require('./routers/pollutions')
-const csvReader = require('./external_apis/csvReader')
 const worldbankCSV = require('./external_apis/worldbankCSV')
 
 app.use(cors())
-// app.use(bodyParser.json())
 
-app.get('/', (req, res) => {
+app.get('/', (req, res) => { // Frontpage HTML
   res.send('<h1>Co2-emissions!</h1> <p> To search for emissions by country name -> /country/:name </p> <p> To search for superpower data -> /superpowers </p> ')
 })
 
@@ -35,13 +33,11 @@ server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
 
-// server.listen(config.port, () => {
-//   console.log(`Server running on port ${config.port}`)
-// })
-
+// Download the newest released popoulation and emission csv tables from the world bank API
 worldbankCSV.worldbankDownloadCSV("http://api.worldbank.org/v2/en/indicator/EN.ATM.CO2E.KT?downloadformat=csv", "emissions.zip")
 worldbankCSV.worldbankDownloadCSV("http://api.worldbank.org/v2/en/indicator/SP.POP.TOTL?downloadformat=csv", "populations.zip")
 
+// Extract the downloaded zips
 worldbankCSV.worldbankExtractZip("emissions")
 worldbankCSV.worldbankExtractZip("populations")
 

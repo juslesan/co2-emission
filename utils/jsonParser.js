@@ -1,5 +1,5 @@
 
-
+// Find by name
 const jsonParseName = (json, name) => {
     let count = Object.keys(json).length;
     
@@ -9,9 +9,11 @@ const jsonParseName = (json, name) => {
             return i;
         }
     }
-    return -1;
+    return -1; // returns -1 if name is not found
 }
 
+// Find superpowers from json
+// The returned superpowers may be updated here.
 const jsonParseSuperpowers = (json) => {
     let count = Object.keys(json).length;
     let indexes = []

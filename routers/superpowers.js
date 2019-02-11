@@ -5,6 +5,7 @@ const csvReader = require('./../external_apis/csvReader')
 const xml = require('xml');
 const jsonParser = require('./../utils/jsonParser')
 
+// Get router for superpower data
 superpowersRouter.get('/', async (req, res) => {
     const populations = await csvReader.readCSV('./external_apis/data/populations.csv')
 

@@ -5,6 +5,8 @@ const csvReader = require('./../external_apis/csvReader')
 const xml = require('xml');
 const jsonParser = require('./../utils/jsonParser')
 
+
+// Find the worldbank population and emission data of a country by name
 countryRouter.get('/:name', async (req, res) => {
     const populations = await csvReader.readCSV('./external_apis/data/populations.csv')
 
