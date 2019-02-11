@@ -38,7 +38,7 @@ const jsonParseSuperpowers = (json) => {
 
 }
 
-
+// Modify the population and emission data into a single json
 const jsonYears = (populations, emissions) => {
     let count = Object.keys(populations).length;
 
@@ -48,7 +48,7 @@ const jsonYears = (populations, emissions) => {
                         data: {}}
     const emisYears = { name: "emissions",
                         data: {}}
-    for (let i = 4; i < count; i++) {
+    for (let i = 4; i < count; i++) { // index 4 makes sure no metadata is saved
         const year = 1956 + i
         popsYears.data[year] = Object.values(populations)[i]
         emisYears.data[year] = Object.values(emissions)[i]
