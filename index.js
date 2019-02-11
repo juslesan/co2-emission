@@ -23,7 +23,7 @@ app.use(axios)
 const server = http.createServer(app)
 
 
-var PORT = process.env.PORT || 3003
+var PORT = process.env.PORT || config.port
 
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
